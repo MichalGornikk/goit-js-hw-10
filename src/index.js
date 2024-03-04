@@ -41,13 +41,15 @@ async function fetchCatByBreed(breedId) {
       <p>Temperament: ${catData.breeds[0].temperament}</p>
     `;
     loader.style.display = 'none';
+    errorParagraph.style.display = 'none'; // Hide error message if successful
   } catch (error) {
     console.error('Error fetching cat info: ', error);
     Notiflix.Notify.failure(
       'Oops! Something went wrong while fetching cat info!'
     );
     loader.style.display = 'none';
-    errorParagraph.style.display = 'block';
+    errorParagraph.style.display = 'block'; // Show error message
+    catInfoDiv.innerHTML = ''; // Clear cat info if error occurs
   }
 }
 
